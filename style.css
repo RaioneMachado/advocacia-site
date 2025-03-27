@@ -921,4 +921,171 @@ body {
 body.no-scroll {
     overflow: hidden;
 }
+/* Estilo para o container do fundo */
+.contato-background {
+    position: relative;
+    padding: 40px;
+    border-radius: 10px;
+    overflow: hidden;
+    min-height: 400px; /* Ajuste conforme necessário */
+}
 
+/* Estilo para a seção de contato com imagem de fundo */
+.contato {
+    position: relative;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    padding: 80px 0;
+}
+
+/* Overlay escuro para melhor legibilidade */
+.contato::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.7);
+    z-index: 0;
+}
+
+/* Container do conteúdo */
+.contato .container {
+    position: relative;
+    z-index: 1;
+}
+
+/* Estilo para as informações de contato */
+.contato-info {
+    background: rgba(30, 30, 30, 0.8);
+    padding: 40px;
+    border-radius: 10px;
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+/* Mantenha seus estilos atuais para info-item e social-links */
+.info-item {
+    margin-bottom: 20px;
+    display: flex;
+    align-items: center;
+}
+
+.info-item i {
+    color: gold;
+    margin-right: 15px;
+    font-size: 1.2rem;
+}
+
+.social-links {
+    display: flex;
+    gap: 15px;
+    margin-top: 30px;
+}
+
+.social-links a {
+    color: gold;
+    font-size: 1.5rem;
+    transition: transform 0.3s;
+}
+
+.social-links a:hover {
+    transform: translateY(-3px);
+}
+/* ========== SEÇÃO DEPOIMENTOS ========== */
+.depoimentos {
+    position: relative;
+    padding: 80px 0;
+    overflow: hidden;
+}
+
+/* Imagem de fundo */
+.fundo-depoimento {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    z-index: -1;
+    opacity: 0.9;
+}
+
+/* Overlay escuro para melhor contraste */
+.depoimentos::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.6);
+    z-index: -1;
+}
+
+/* Container principal */
+.depoimentos .container {
+    position: relative;
+    z-index: 1;
+}
+
+/* Linha de depoimentos lado a lado */
+.depoimentos-linha {
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+    margin-top: 40px;
+}
+
+/* Cards de depoimento */
+.depoimento-card {
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 10px;
+    padding: 25px;
+    width: 100%;
+    max-width: 450px;
+    backdrop-filter: blur(5px);
+}
+
+/* Foto do cliente */
+.cliente-foto {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 3px solid gold;
+    display: block;
+    margin: 0 auto 15px;
+}
+
+/* Conteúdo do depoimento */
+.depoimento-conteudo {
+    text-align: center;
+    color: white;
+}
+
+.depoimento-conteudo p {
+    font-style: italic;
+    margin-bottom: 10px;
+    line-height: 1.5;
+}
+
+.depoimento-conteudo h4 {
+    color: gold;
+    font-weight: 600;
+}
+
+/* ========== RESPONSIVIDADE ========== */
+@media (max-width: 768px) {
+    .depoimentos-linha {
+        flex-direction: column;
+        align-items: center;
+        gap: 20px;
+    }
+    
+    .depoimento-card {
+        width: 100%;
+    }
+}

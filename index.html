@@ -33,7 +33,7 @@
     <!-- Seção Hero (Capa) -->
     <section class="hero" id="inicio">
         <div class="hero-bg">
-            <img src="imagens/PAGINA-HOBERT-ADV-COMPLETA_06-1.jpg.webp" alt="Fundo da capa">
+            <img src="imagens/Captura de tela 2025-03-27 131443 (1).png" alt="Fundo da capa">
         </div>
         
         <div class="hero-overlay"></div>
@@ -57,7 +57,7 @@
                 <div class="servico-icon">
                     <i class="fa-solid fa-building-columns"></i>
                 </div>
-                <h3>Direito Bancário</h3>
+                <h3><span style="color: gold;">Direito Bancário</span></h3>
                 <p>Atuação Completa em Direito Bancário.</p>
                 <a href="pag002.html" class="ler-mais">Ler mais...</a>
 
@@ -67,7 +67,7 @@
                 <div class="servico-icon">
                     <i class="fa-solid fa-plane-departure"></i>
                 </div>
-                <h3>Direito do passageiro</h3>
+                <h3><span style="color: gold;">Direito do passageiro</span></h3>
                 <p>Atuação Completa em Direito do passageiro.</p>
                 <a href="pag003.html" class="ler-mais">Ler mais...</a>
             </div>
@@ -76,7 +76,7 @@
                 <div class="servico-icon">
                     <i class="fa-solid fa-phone"></i>
                 </div>
-                <h3>Direito telefônico</h3>
+                <h3><span style="color: gold;">Direito telefônico</span></h3>
                 <p>Defesa em processos de telefonia</p>
                 <a href="pag004.html" class="ler-mais">Ler mais...</a>
             </div>
@@ -97,7 +97,7 @@
                         
                             <p>
                                 <strong>
-                                    advogado especializado na defesa dos direitos do consumidor, com atuação focada em resolver conflitos de forma ágil e eficiente. Meu trabalho é garantir justiça para clientes que enfrentam abusos em relações bancárias, transportes, operadoras telefônicas, concessionárias de serviços essenciais, compras ou negativações indevidas e casos de propaganda enganosa.
+                                    <span style="color: gold;">Me chamo Norma Socorro Mota </span>advogado especializado na defesa dos direitos do consumidor, com atuação focada em resolver conflitos de forma ágil e eficiente. Meu trabalho é garantir justiça para clientes que enfrentam abusos em relações bancárias, transportes, operadoras telefônicas, concessionárias de serviços essenciais, compras ou negativações indevidas e casos de propaganda enganosa.
                                         Atendo cada caso com seriedade, estratégia e total comprometimento, buscando sempre a melhor solução para quem confia no meu trabalho.
                                 </strong>
                             </p>
@@ -117,43 +117,40 @@
         </div>
     </section>
 
-    <!-- Seção Portfólio (Casos) -->
-    <section class="portfolio" id="portfolio">
-        <div class="container">
-            <h2 class="section-title"><span style="color: gold;">Casos de Sucesso</span></h2>
-            <div class="portfolio-grid">
-                <div class="portfolio-item">
-                    <img src="images/portfolio/projeto1.jpg" alt="Caso Corporativo">
-                    <div class="portfolio-overlay">
-                        <h3>Caso Corporativo</h3>
-                        <p>Recuperação de créditos</p>
-                        <a href="#" class="btn-portfolio">Detalhes</a>
-                    </div>
-                </div>
-                
-                <div class="portfolio-item">
-                    <img src="images/portfolio/projeto2.jpg" alt="Caso Familiar">
-                    <div class="portfolio-overlay">
-                        <h3>Caso Familiar</h3>
-                        <p>Partilha de bens</p>
-                        <a href="#" class="btn-portfolio">Detalhes</a>
-                    </div>
-                </div>
-                
-                <div class="portfolio-item">
-                    <img src="images/portfolio/projeto3.jpg" alt="Caso Tributário">
-                    <div class="portfolio-overlay">
-                        <h3>Caso Tributário</h3>
-                        <p>Defesa fiscal</p>
-                        <a href="#" class="btn-portfolio">Detalhes</a>
-                    </div>
+
+<!-- Seção Depoimentos -->
+<section class="depoimentos" id="depoimentos">
+    <!-- IMAGEM DE FUNDO (substitua pelo seu caminho) -->
+    <img src="imagens/capa depoimentps.png" alt="Fundo" class="fundo-depoimento">
+    
+    <div class="container">
+        <h2 class="section-title"><span style="color: gold;">Depoimentos</span></h2>
+        
+        <div class="depoimentos-linha"> <!-- Novo container -->
+            <!-- Depoimento 1 -->
+            <div class="depoimento-card">
+                <img src="imagens/mulher.png" alt="Cliente" class="cliente-foto">
+                <div class="depoimento-conteudo">
+                    <p>"Resolvi meu problema jurídico em tempo recorde!"</p>
+                    <h4>- Ana Souza</h4>
                 </div>
             </div>
-            <div class="center-btn">
-                <a href="#" class="btn">Veja Mais Casos</a>
+            
+            <!-- Depoimento 2 -->
+            <div class="depoimento-card">
+                <img src="imagens/homme.png" alt="Cliente" class="cliente-foto">
+                <div class="depoimento-conteudo">
+                    <p>"Profissionalismo e dedicação em cada detalhe."</p>
+                    <h4>- Carlos Mendes</h4>
+                </div>
             </div>
         </div>
-    </section>
+    </div>
+</section>
+
+    <!-- Input oculto para seleção de imagens -->
+    <input type="file" id="seletor-fundo-depoimentos" accept="image/*" style="display:none;">
+</section>
 
     <!-- Seção Contato -->
     <section class="contato" id="contato">
@@ -178,19 +175,17 @@
                         <a href="#"><i class="fab fa-linkedin"></i></a>
                         <a href="#"><i class="fab fa-instagram"></i></a>
                     </div>
-                </div>
-                <form class="contato-form">
-                    <input type="text" placeholder="Seu Nome" required>
-                    <input type="email" placeholder="Seu Email" required>
-                    <input type="tel" placeholder="Seu Telefone">
-                    <textarea placeholder="Sua Mensagem" required></textarea>
-                    <button type="submit" class="btn">Enviar Mensagem</button>
-                </form>
-            </div>
+
         </div>
     </section>
 
     <!-- Rodapé -->
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; <span id="year"></span> Acessoria e Consultoria Jurídica. Todos os direitos reservados.</p>
+        </div>
+    </footer>
+</footer>
 
 
     <script src="script.js"></script>
