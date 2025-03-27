@@ -30,30 +30,6 @@
                 </div>
             </nav>
         </div>
-
-        <!DOCTYPE html>
-<html lang="pt-br">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>WhatsApp Flutuante</title>
-    <!-- Link para o arquivo CSS -->
-    <link rel="stylesheet" href="whatsapp-float.css">
-    <!-- Font Awesome para o ícone -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-</head>
-<body>
-    <!-- Conteúdo principal do seu site aqui -->
-    
-    <!-- Botão flutuante do WhatsApp -->
-    <a href="https://wa.me/5593984556149" class="whatsapp-float" target="_blank" aria-label="Fale conosco pelo WhatsApp">
-        <i class="fab fa-whatsapp"></i>
-    </a>
-    
-    <!-- Opcional: Tooltip flutuante -->
-    <div class="whatsapp-tooltip">Fale conosco!</div>
-</body>
-</html>
     </header>
 
    
@@ -130,26 +106,30 @@
                         <p><span style="color: beige;">norma_if@hotmail.com</span></p>
                     </div>
                     <div class="social-links">
-                        <a href="https://wa.me/5593984556149" class="btn" target="_blank">
-                            <span style="color: black;">Fale com especialista</span>
-                            <i class="fab fa-whatsapp" style="color: black; margin-left: 8px;"></i>
-                        </a>
+                        <a href="https://wa.me/5593984556149" target="_blank"><i class="fab fa-whatsapp"></i></a>
                         <a href="#"><i class="fab fa-linkedin"></i></a>
                         <a href="#"><i class="fab fa-instagram"></i></a>
                     </div>
-
+                </div>
+            </div>
         </div>
     </section>
 
     <!-- Rodapé -->
-
-        <footer class="footer">
-            <div class="container">
-                <p>&copy; <span id="year"></span> Acessoria e Consultoria Jurídica. Todos os direitos reservados.</p>
-            </div>
-        </footer>
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; <span id="year"></span> Acessoria e Consultoria Jurídica. Todos os direitos reservados.</p>
+        </div>
     </footer>
 
+    <script src="script.js"></script>
 </body>
 
+    <!-- Botão Flutuante do WhatsApp -->
+    <div class="whatsapp-float-container">
+        <a href="https://wa.me/5593984556149" class="whatsapp-float" target="_blank" aria-label="Fale conosco pelo WhatsApp">
+            <i class="fab fa-whatsapp"></i>
+            <span class="whatsapp-text">Fale Conosco</span>
+        </a>
+    </div>
 </html>
