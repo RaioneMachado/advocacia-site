@@ -1,76 +1,70 @@
 document.addEventListener('DOMContentLoaded', function() {
+    const header = document.querySelector('.header');
+    const scrollThreshold = 50; // Ajuste este valor para quando o efeito deve começar
+    
     // Menu Mobile
     const menuToggle = document.querySelector('.menu-toggle');
     const navLinks = document.querySelector('.nav-links');
     
-    menuToggle.addEventListener('click', function() {
-        navLinks.classList.toggle('active');
-    });
-    
-    // Fechar menu ao clicar em um link
-    document.querySelectorAll('.nav-links a').forEach(link => {
-        link.addEventListener('click', function() {
-            navLinks.classList.remove('active');
-        });
-    });
-    
-    // Efeito de scroll no header
-    window.addEventListener('scroll', function() {
-        const header = document.querySelector('.header');
-        if(window.scrollY > 50) {
+    // Função para controle do scroll
+    function handleScroll() {
+        if (window.scrollY > scrollThreshold) {
             header.classList.add('scrolled');
         } else {
             header.classList.remove('scrolled');
         }
-    });
+    }
     
-    // Scroll suave para links
-    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-        anchor.addEventListener('click', function(e) {
-            e.preventDefault();
+    // Função para toggle do menu mobile
+    function toggleMenu() {
+        if (menuToggle && navLinks) {
+            menuToggle.addEventListener('click', function() {
+                navLinks.classList.toggle('active');
+                this.classList.toggle('active');
+                
+                // Alternar ícone
+                const icon = this.querySelector('i');
+                if (icon) {
+                    icon.classList.toggle('fa-bars');
+                    icon.classList.toggle('fa-times');
+                }
+                
+                // Bloquear scroll quando menu aberto (apenas mobile)
+                if (window.innerWidth <= 768) {
+                    body.classList.toggle('no-scroll', navLinks.classList.contains('active'));
+                }
+            });
             
-            const targetId = this.getAttribute('href');
-            if(targetId === '#') return;
-            
-            const targetElement = document.querySelector(targetId);
-            if(targetElement) {
-                window.scrollTo({
-                    top: targetElement.offsetTop - 80,
-                    behavior: 'smooth'
+            // Fechar menu ao clicar nos links
+            document.querySelectorAll('.nav-links a').forEach(link => {
+                link.addEventListener('click', function() {
+                    if (window.innerWidth <= 768) {
+                        navLinks.classList.remove('active');
+                        menuToggle.classList.remove('active');
+                        body.classList.remove('no-scroll');
+                        const icon = menuToggle.querySelector('i');
+                        if (icon) {
+                            icon.classList.remove('fa-times');
+                            icon.classList.add('fa-bars');
+                        }
+                    }
                 });
-            }
-        });
+            });
+        }
+    }
+    
+    // Inicialização
+    handleScroll(); // Verifica estado inicial
+    toggleMenu(); // Configura menu mobile
+    
+    // Event listeners
+    window.addEventListener('scroll', handleScroll);
+    window.addEventListener('resize', function() {
+        // Fecha menu se redimensionar para desktop
+        if (window.innerWidth > 768 && navLinks) {
+            navLinks.classList.remove('active');
+            if (menuToggle) menuToggle.classList.remove('active');
+            body.classList.remove('no-scroll');
+        }
     });
-    
-    // Animação ao rolar
-    const animateOnScroll = function() {
-        const elements = document.querySelectorAll('.servico-card, .portfolio-item, .sobre-img, .sobre-texto, .contato-info, .contato-form');
-        
-        elements.forEach(element => {
-            const elementPosition = element.getBoundingClientRect().top;
-            const screenPosition = window.innerHeight / 1.2;
-            
-            if(elementPosition < screenPosition) {
-                element.style.opacity = '1';
-                element.style.transform = 'translateY(0)';
-            }
-        });
-    };
-    
-    // Definir propriedades iniciais para animação
-    const animatableElements = document.querySelectorAll('.servico-card, .portfolio-item, .sobre-img, .sobre-texto, .contato-info, .contato-form');
-    
-    animatableElements.forEach(element => {
-        element.style.opacity = '0';
-        element.style.transform = 'translateY(20px)';
-        element.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
-    });
-    
-    // Disparar uma vez ao carregar
-    animateOnScroll();
-    
-    window.addEventListener('scroll', animateOnScroll);
-    
-    // Atualizar ano no footer
-    document.getElementById('year').textContent = new Date().getFullYear();
 });

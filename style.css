@@ -91,15 +91,22 @@ img {
 
 /* Header */
 .header {
-    background-color: var(--preto-claro);
+    background-color: rgba(30, 30, 30, 0.95); /* 95% opaco inicialmente */
     position: fixed;
     width: 100%;
     top: 0;
     z-index: 1000;
     box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
-    transition: all 0.3s ease;
+    transition: all 0.5s ease;
+    backdrop-filter: blur(1px); /* Efeito de desfoque mais suave */
 }
 
+.header.scrolled {
+    background-color: rgba(30, 30, 30, 0.85); /* 85% opaco quando scrollado */
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+}
+
+/* Mantenha todo o resto do seu CSS original para o menu */
 .header.scrolled {
     padding: 10px 0;
 }
@@ -112,9 +119,10 @@ img {
 }
 
 .logo img {
-    height: 40px;
+    height: 180px; /* Aumentei de 150px para 180px */
     width: auto;
     transition: all 0.3s ease;
+    filter: brightness(1.1); /* Melhora a visibilidade */
 }
 
 .navbar {
@@ -122,8 +130,13 @@ img {
     align-items: center;
 }
 
+/* ===== PARTE CORRIGIDA DO MENU MOBILE ===== */
+
+/* Menu Desktop (Padrão) */
 .nav-links {
     display: flex;
+    gap: 20px;
+    list-style: none;
 }
 
 .nav-links li {
@@ -135,34 +148,74 @@ img {
     position: relative;
     padding: 5px 0;
     transition: color 0.3s ease;
+    color: var(--branco);
 }
 
 .nav-links a:hover {
     color: var(--destaque);
 }
 
-.nav-links a::after {
-    content: '';
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    width: 0;
-    height: 2px;
-    background-color: var(--destaque);
-    transition: width 0.3s ease;
-}
-
-.nav-links a:hover::after {
-    width: 100%;
-}
-
+/* Ícone Hamburguer */
 .menu-toggle {
     display: none;
-    font-size: 1.5rem;
     cursor: pointer;
+    background: none;
+    border: none;
     color: var(--branco);
+    font-size: 1.8rem;
+    z-index: 1001;
 }
 
+@media (max-width: 768px) {
+    /* MENU PRINCIPAL (continua igual) */
+    .nav-links {
+        position: fixed;
+        top: 80px;
+        right: -50%;
+        width: 50%; /* Largura do menu */
+        height: 100vh;
+        background: var(--preto-claro);
+        transition: right 0.3s ease-out;
+        z-index: 1000;
+    }
+    
+    /* OVERLAY - ESSA É A PARTE QUE VOCÊ QUER MUDAR */
+    .nav-overlay {
+        position: fixed;
+        top: 80px;
+        left: 0;
+        width: 100%;
+        height: 50vh; /* ⭐⭐ METADE DA TELA VERTICAL ⭐⭐ */
+        background: rgba(0,0,0,0.5);
+        z-index: 999;
+        opacity: 0;
+        pointer-events: none;
+        transition: opacity 0.3s ease;
+    }
+    
+    .nav-overlay.active {
+        opacity: 1;
+        pointer-events: auto;
+    }
+}
+
+    /* Ícone hamburguer */
+    .menu-toggle {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 40px;
+        height: 40px;
+        z-index: 1001;
+    }
+
+    .menu-toggle.active .fa-bars::before {
+        content: "\f00d"; /* Muda para ícone X */
+    }
+
+
+/* ===== MANTENHA TODO O RESTO DO SEU CSS ORIGINAL AQUI ===== */
+/* [Todo o restante do seu CSS permanece exatamente como está] */
 /* Hero Section - Correção Definitiva */
 .hero {
     position: relative;
@@ -191,12 +244,12 @@ img {
 }
 
 .hero-overlay {
+    background: rgba(0, 0, 0, 0.2);
     position: absolute;
     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
-    background: rgba(0, 0, 0, 0.5);
     z-index: 1; /* Entre o fundo e o conteúdo */
 }
 
@@ -206,7 +259,6 @@ img {
     max-width: 800px;
     margin: 0 auto;
     color: white;
-
 }
 
 .hero h1 {
@@ -615,11 +667,11 @@ img {
     text-decoration: none;
     transition: all 0.3s ease;
 }
-
 .ler-mais:hover {
     color: var(--destaque-hover);
     text-decoration: underline;
 }
+
 /* Estilos Gerais */
 * {
     margin: 0;
@@ -630,7 +682,7 @@ img {
 
 body {
     background-color: #f0f0f0; /* Fundo cinza claro */
-    color: #fff; /* Cor da fonte branca */
+    color: #333; /* Cor da fonte padrão */
 }
 
 /* Cabeçalho */
@@ -670,7 +722,6 @@ body {
 
 /* Seção Direito Bancário */
 .pagina-servico {
-    background-color: #000000; /* Fundo cinza claro */
     padding: 60px 20px;
 }
 
@@ -691,6 +742,7 @@ body {
     display: flex;
     gap: 30px;
     justify-content: space-between;
+    width: 100%;
 }
 
 .servico-imagem img {
@@ -701,22 +753,23 @@ body {
 
 .servico-conteudo {
     flex: 1;
-    padding: 20px;
-    background-color: #fff; /* Fundo branco para o conteúdo */
-    border-radius: 8px;
-    color: #333; /* Texto escuro dentro do conteúdo */
+    padding: 0; /* Removido o padding interno */
+    background: none; /* Removido o fundo branco */
+    border-radius: 0; /* Removido o border-radius */
+    color: #333; /* Mantém o texto escuro */
+    width: 100%;
 }
 
 .servico-conteudo h2 {
     font-size: 28px;
-    color: #f39c12; /* Título em amarelo */
+    color: #f39c12;
     margin-bottom: 20px;
 }
 
 .servico-conteudo h3 {
     font-size: 22px;
     margin-top: 20px;
-    color: #f39c12; /* Subtítulos em amarelo */
+    color: #f39c12;
 }
 
 .servico-conteudo ul {
@@ -728,7 +781,7 @@ body {
 .servico-conteudo a.btn {
     display: inline-block;
     padding: 10px 20px;
-    background-color: #f39c12; /* Botão em amarelo */
+    background-color: #f39c12;
     color: #fff;
     font-size: 16px;
     text-decoration: none;
@@ -738,7 +791,7 @@ body {
 }
 
 .servico-conteudo a.btn:hover {
-    background-color: #f1c40f; /* Cor do botão ao passar o mouse */
+    background-color: #f39c12;
 }
 
 /* Rodapé */
@@ -758,6 +811,7 @@ body {
     .servico-detalhes {
         flex-direction: column;
         align-items: center;
+        width: 100%;
     }
 
     .servico-imagem img {
@@ -765,6 +819,10 @@ body {
     }
 
     .servico-conteudo {
+        width: 100%;
+        padding: 0;
+        background: none;
+        border-radius: 0;
         margin-top: 20px;
     }
 
@@ -777,3 +835,90 @@ body {
         cursor: pointer;
     }
 }
+
+/* Mobile Menu */
+.navbar .nav-links {
+    display: flex;
+    flex-direction: row;
+    gap: 15px;
+}
+
+.menu-toggle {
+    display: none;
+}
+
+/* Quando a tela for menor que 768px */
+@media (max-width: 768px) {
+    .navbar .nav-links {
+        display: none;
+        flex-direction: column;
+        width: 100%;
+        text-align: center;
+        background-color: #333; /* cor do fundo do menu */
+        position: absolute;
+        top: 60px;
+        left: 0;
+        padding: 10px 0;
+    }
+
+    .navbar .nav-links.active {
+        display: flex;
+    }
+
+    .menu-toggle {
+        display: block;
+        font-size: 30px;
+        cursor: pointer;
+        color: white;
+    }
+}
+/* Estilos para o menu mobile */
+@media (max-width: 768px) {
+    .nav-links {
+        position: fixed;
+        top: 80px;
+        left: 0;
+        width: 100%;
+        height: calc(100vh - 80px);
+        background: var(--preto-claro);
+        flex-direction: column;
+        align-items: center;
+        padding-top: 40px;
+        transform: translateX(-100%);
+        transition: transform 0.3s ease;
+        z-index: 999;
+    }
+    
+    .nav-links.active {
+        transform: translateX(0);
+    }
+    
+    .menu-toggle.active {
+        color: var(--destaque);
+    }
+    
+    /* Overlay quando menu aberto */
+    .nav-links::before {
+        content: '';
+        position: fixed;
+        top: 0;
+        right: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(0, 0, 0, 0.7);
+        z-index: -1;
+        opacity: 0;
+        transition: opacity 0.3s ease;
+    }
+    
+    .nav-links.active::before {
+        opacity: 1;
+        left: 100%;
+    }
+}
+
+/* Bloquear scroll quando menu aberto */
+body.no-scroll {
+    overflow: hidden;
+}
+
