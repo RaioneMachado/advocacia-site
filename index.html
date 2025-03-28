@@ -4,6 +4,16 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Acessoria e Consultoria Jurídica</title>
+
+    <!-- Favicon usando tag img (não convencional) -->
+    <img src="imagens/logo_Direito.png" id="favicon" style="display: none;">
+    <script>
+      // Script para tentar forçar o favicon (pode não funcionar em todos navegadores)
+      document.querySelector('link[rel="icon"]') || 
+      document.head.insertAdjacentHTML('beforeend', 
+        '<link rel="icon" href="' + document.getElementById('favicon').src + '">');
+    </script>
+
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="stylesheet" href="style.css">
 </head>
